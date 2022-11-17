@@ -10,7 +10,13 @@ const Locators = {
   //   cart modal
   cart_modal: '#content',
   empty_cart_text: 'div=Your shopping cart is empty.',
-  close_icon: '[data-id="closeIcon"]'
+  close_icon: '[data-id="closeIcon"]',
+
+
+//   home page
+restauarant_muchacho: '[href*="/am/restaurants/muchacho" ]',
+//   restaurant page 
+
 };
 
 export default Locators;
