@@ -6,7 +6,7 @@ import LoginModal from '../pageobjects/Components/LoginModal';
 import DishModal from '../pageobjects/Components/DishModal';
 
 describe('test suit for cart functionality', () => {
-  it('Verify cart button functionality when cart is empty', async () => {
+  it.only('Verify cart button functionality when cart is empty', async () => {
     await HomePage.visit();
     await HomePage.closeNotification();
     await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
@@ -24,7 +24,7 @@ describe('test suit for cart functionality', () => {
     await NavBar.checkNotificationOnCart();
   });
 
-  it.only('Verify that counter appears on the cart icon after after clicking on "Add to cart" button', async () => {
+  it('Verify that counter appears on the cart icon after after clicking on "Add to cart" button', async () => {
     await HomePage.visit();
     await HomePage.closeNotification();
     await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
@@ -51,7 +51,7 @@ describe('test suit for cart functionality', () => {
   });
 
 
-  it.only('Check if cart items details are translated after changing language', async () => {
+  it('Check if cart items details are translated after changing language', async () => {
     await HomePage.visit();
     await HomePage.closeNotification();
     await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
