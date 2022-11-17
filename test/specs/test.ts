@@ -39,4 +39,30 @@ describe('test suit for cart functionality', () => {
   //   await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
   //   await LoginModal.logIn('anna.elez.y@tumo.org','Ltkmabyfhbq059')
   // });
+
+  it('Verify that "Sign in to order " button displays in the cart modal when user is not signed in', async () => {
+    await HomePage.visit();
+    await HomePage.closeNotification();
+    await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
+    await HomePage.clickOnRestaurant();
+    await RestaurantPage.clickOnCartIcon();
+    await NavBar.clickOnCartButton();
+    await CartModal.checkSignInButtonText();
+  });
+
+
+  it.only('Check if cart items details are translated after changing language', async () => {
+    await HomePage.visit();
+    await HomePage.closeNotification();
+    await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
+    await HomePage.clickOnRestaurant();
+    await RestaurantPage.clickOnCartIcon();
+    await NavBar.changeLanguage();
+    await browser.pause(2000)
+    await NavBar.clickOnCartButton();
+    await CartModal.seeDishDetails()
+    await browser.pause(2000)
+    await DishModal.dishDesc()
+  });
+
 });

@@ -17,8 +17,8 @@ class LoginModal {
         return $(Locators.password_input);
     }
 
-    public get signIn_button() {
-        return $(Locators.signIn_button);
+    public get sign_in_button() {
+        return $(Locators.sign_in_button);
     }
 
     public get account_icon() {
@@ -30,7 +30,7 @@ class LoginModal {
         await (await this.dialog_modal).isDisplayed();
         await (await this.email_input).setValue(email);
         await (await this.password_input).setValue(password);
-        await (await this.signIn_button).click();
+        await (await this.sign_in_button).click();
 
         await expect(this.account_icon).toBeDisplayed()
     }
