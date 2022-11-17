@@ -13,7 +13,7 @@ class Homepage {
   }
 
   public async closeNotification() {
-    if (await (await this.notification_button).isExisting) {
+    if (await (await this.notification_button).isExisting()) {
       await (await this.notification_button).click();
     }
   }
