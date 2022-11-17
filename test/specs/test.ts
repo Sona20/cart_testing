@@ -14,11 +14,12 @@ describe('test suit for cart functionality', () => {
     await CartModal.closeCartModal()
   });
 
-  it.only('Verify that counter appears on the cart icon after adding an item to the cart', async () => {
+  it('Verify that counter appears on the cart icon after adding an item to the cart', async () => {
     await HomePage.visit();
     await HomePage.closeNotification();
     await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
     await HomePage.clickOnRestaurant()
+    await RestaurantPage.clickOnCartIcon()
   });
   // it('Verify that "Sign in to order " button displays in the cart modal when user is not signed in', async () => {
   //   await HomePage.visit();

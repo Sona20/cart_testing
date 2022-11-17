@@ -7,8 +7,11 @@ class NavBar {
   public get cart_button() {
     return $(Locators.cart_button);
   }
+  public get count_on_cart() {
+    return $(Locators.count_on_cart);
+  }
 
-  public async setaddress(addressName:string) {
+  public async setaddress(addressName: string) {
     await (await this.address_input).setValue(addressName);
     // await (await $('.Mui-focused input')).isDisplayed()
     await browser.pause(1000);
@@ -16,6 +19,9 @@ class NavBar {
   }
   public async clickOnCartButton() {
     await (await this.cart_button).click();
+  }
+  public async checkNotificationOnCart() {
+    await expect(await this.count_on_cart).toBeDisplayed;
   }
 }
 export default new NavBar();

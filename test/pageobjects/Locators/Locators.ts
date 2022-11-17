@@ -7,7 +7,7 @@ const Locators = {
   cart_button: '[aria-label="basket"]',
   languages: '[data-id="languages"]',
   account_icon: '[data-id="account"]',
-
+  count_on_cart: '.count',
   //   cart modal
   cart_modal: '#content',
   empty_cart_text: 'div=Your shopping cart is empty.',
@@ -17,6 +17,7 @@ const Locators = {
   restauarant_muchacho: '[href*="/restaurants/muchacho" ]',
   //   restaurant page
 
+  cart_icon: '[data-id="add-to-cart"]',
   // login modal
   email_input: "[name='user']",
   password_input: "[name='pwd']",

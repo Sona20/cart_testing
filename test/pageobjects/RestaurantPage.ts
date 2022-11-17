@@ -1,16 +1,11 @@
 import Locators from './Locators/Locators';
 
 class Restaurantpage {
-  public get login_button() {
-    return $(Locators.login_button);
+  public get cart_icon() {
+    return $(Locators.cart_icon);
   }
-
-  public async visit() {
-    await browser.url('https://menu.am/en');
-  }
-
-  public async closeNotification() {
-      await (await this.login_button).click();
+  public async clickOnCartIcon() {
+      await (await this.cart_icon).click();
       await browser.pause(5000)
   }
 }
