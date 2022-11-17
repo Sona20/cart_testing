@@ -14,8 +14,9 @@ const Locators = {
   close_icon: '[data-id="closeIcon"]',
 
   //   home page
-  restauarant_muchacho: '[href*="/restaurants/muchacho" ]',
+  restaurant_muchacho: '[href*="/restaurants/muchacho" ]',
   //   restaurant page
+  dish_title: 'h3[data-id="name"]',
 
   cart_icon: '[data-id="add-to-cart"]',
   // login modal
@@ -23,6 +24,8 @@ const Locators = {
   password_input: "[name='pwd']",
   dialog_modal: '[role="dialog"]',
   signIn_button: '.MuiDialogContent-root .MuiButtonBase-root.MuiButton-root',
-};
 
+  //   dish modal
+  add_to_cart_button: 'span=Add to Cart',
+};
 export default Locators;

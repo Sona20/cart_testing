@@ -21,7 +21,7 @@ class NavBar {
     await (await this.cart_button).click();
   }
   public async checkNotificationOnCart() {
-    await expect(await this.count_on_cart).toBeDisplayed;
+    await expect(await this.count_on_cart).toBeDisplayed();
   }
 }
 export default new NavBar();

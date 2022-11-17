@@ -4,8 +4,8 @@ class Homepage {
   public get notification_button() {
     return $(Locators.notification_button);
   }
-  public get restauarant_muchacho() {
-    return $(Locators.restauarant_muchacho);
+  public get restaurant_muchacho() {
+    return $(Locators.restaurant_muchacho);
   }
 
   public async visit() {
@@ -18,7 +18,7 @@ class Homepage {
     }
   }
   public async clickOnRestaurant() {
-      await (await this.restauarant_muchacho).click();
+      await (await this.restaurant_muchacho).click();
   }
 }
 export default new Homepage();
