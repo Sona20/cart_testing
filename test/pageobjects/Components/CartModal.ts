@@ -13,8 +13,8 @@ class CartModal {
   public get close_icon() {
     return $(Locators.close_icon);
   }
-  public get sign_in_to_order() {
-    return $(Locators.sign_in_to_order);
+  public get cart_modal_button() {
+    return $(Locators.cart_modal_button);
   }
   public get product_img() {
     return $(Locators.product_img);
@@ -31,7 +31,7 @@ class CartModal {
   }
 
   public async checkSignInButtonText() {
-    await expect(this.sign_in_to_order).toBeDisplayed()
+    await expect(this.cart_modal_button).toHaveTextContaining('Sign In to Order')
   }
 
   public async seeDishDetails() {

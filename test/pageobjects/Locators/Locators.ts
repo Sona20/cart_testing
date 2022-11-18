@@ -15,10 +15,10 @@ const Locators = {
   cart_modal: '#content',
   empty_cart_text: 'div=Your shopping cart is empty.',
   close_icon: '[data-id="closeIcon"]',
-  sign_in_to_order: '.MuiPaper-elevation1.MuiPaper-rounded .MuiButtonBase-root.MuiButton-root',
+  cart_modal_button: '.MuiPaper-elevation1.MuiPaper-rounded .MuiButtonBase-root.MuiButton-root',
 
   //   home page
-  restaurant_muchacho: '[href*="/restaurants/muchacho" ]',
+  restaurant_muchacho: '[title="Muchacho"]',
 
 
   //   restaurant page

@@ -6,7 +6,7 @@ import LoginModal from '../pageobjects/Components/LoginModal';
 import DishModal from '../pageobjects/Components/DishModal';
 
 describe('test suit for cart functionality', () => {
-  it.only('Verify cart button functionality when cart is empty', async () => {
+  it('Verify cart button functionality when cart is empty', async () => {
     await HomePage.visit();
     await HomePage.closeNotification();
     await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
@@ -40,7 +40,7 @@ describe('test suit for cart functionality', () => {
   //   await LoginModal.logIn('anna.elez.y@tumo.org','Ltkmabyfhbq059')
   // });
 
-  it('Verify that "Sign in to order " button displays in the cart modal when user is not signed in', async () => {
+  it.only('Verify that "Sign in to order " button displays in the cart modal when user is not signed in', async () => {
     await HomePage.visit();
     await HomePage.closeNotification();
     await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
@@ -63,6 +63,20 @@ describe('test suit for cart functionality', () => {
     await CartModal.seeDishDetails()
     await browser.pause(2000)
     await DishModal.dishDesc()
+  });
+
+
+  it('Check if cart button have Go to checkout text after signing up', async () => {
+    await HomePage.visit();
+    await HomePage.closeNotification();
+    await NavBar.setaddress('Mesrop Mashtots Avenue, 20');
+    await HomePage.clickOnRestaurant();
+    await RestaurantPage.clickOnCartIcon();
+    await NavBar.clickOnCartButton();
+    await (await CartModal.cart_button).click();
+    await LoginModal.logIn('anna.elez.y@tumo.org', 'Ltkmabyfhbq059');
+    await NavBar.clickOnCartButton();
+    await expect(CartModal.cart_modal_button).toHaveTextContaining('Go to Checkout');
   });
 
 });
