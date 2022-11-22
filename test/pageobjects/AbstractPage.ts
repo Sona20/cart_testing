@@ -24,8 +24,12 @@ export default class AbstractPage {
     public get account_icon() {
         return $(Locators.account_icon);
     }
-    
-    public async logIn( email:string, password:string) {
+
+    public visit(path: string) {
+        return browser.url(`/en/${path}`)
+    }
+
+    public async logIn(email: string, password: string) {
         await (await this.login_button).click();
         await (await this.dialog_modal).isDisplayed();
         await (await this.email_input).setValue(email);
@@ -33,7 +37,7 @@ export default class AbstractPage {
         await (await this.sign_in_button).click();
     }
 
-    public async pause(sec:number){
+    public async pause(sec: number) {
         await browser.pause(sec);
     }
 }
