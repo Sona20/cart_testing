@@ -1,11 +1,13 @@
 import type { Options } from '@wdio/types';
+import { ReportGenerator, HtmlReporter } from 'wdio-html-nice-reporter';
+let reportAggregator: ReportGenerator;
 
 export const config: Options.Testrunner = {
-//   user: 'goya_kQhzAo',
+  //   user: 'goya_kQhzAo',
 
-//   key: 'eeVoFpneNpDiuYstYkVG',
+  //   key: 'eeVoFpneNpDiuYstYkVG',
 
-//   services: [['browserstack', { browserstackLocal: true }]],
+  //   services: [['browserstack', { browserstackLocal: true }]],
   //
   // ====================
   // Runner Configuration
@@ -177,7 +179,33 @@ export const config: Options.Testrunner = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ['spec'],
+
+
+
+
+
+
+  // reporters: ['spec'], 
+  reporters: ['spec',
+    ["html-nice", {
+      outputDir: './reports/html-reports/',
+      filename: 'report.html',
+      reportTitle: 'Test Report Title',
+      linkScreenshots: true,
+      //to show the report in a browser when done
+      showInBrowser: true,
+      collapseTests: false,
+      //to turn on screenshots after every test
+      // useOnAfterCommandForScreenshot: true,
+
+      //to initialize the logger
+      // LOG: log4j.getLogger("default")
+    }
+    ]
+  ],
+
+
+
 
   //
   // Options to be passed to Mocha.

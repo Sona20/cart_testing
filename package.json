@@ -32,6 +32,7 @@
     "wdio-safaridriver-service": "^2.0.0"
   },
   "dependencies": {
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "wdio-html-nice-reporter": "^8.0.6"
   }
 }

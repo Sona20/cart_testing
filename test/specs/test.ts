@@ -20,7 +20,7 @@ describe('test suit for cart functionality', () => {
 
   it('Verify cart button functionality when cart is empty', async () => {
     await NavBar.clickOnCartButton();
-    await expect(CartModal.empty_cart_text).toHaveTextContaining("Your shopping cart is empty.", { message: "Text should be 'Your shopping cart is empty.'" })
+    await expect(CartModal.empty_cart_text).toHaveTextContaining("fdfdfd", { message: "Text should be 'Your shopping cart is empty.'" })
   });
 
   it('Verify that counter appears on the cart icon after adding an item to the cart', async () => {
