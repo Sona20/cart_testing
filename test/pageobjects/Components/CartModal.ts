@@ -1,6 +1,7 @@
+import AbstractPage from '../AbstractPage';
 import Locators from '../Locators/Locators';
 
-class CartModal {
+class CartModal extends AbstractPage{
   public get cart_modal() {
     return $(Locators.cart_modal);
   }
@@ -19,19 +20,9 @@ class CartModal {
   public get product_img() {
     return $(Locators.product_img);
   }
- 
-
-  public async checkEmptyCartMessage() {
-    await expect(this.empty_cart_text).toHaveTextContaining("Your shopping cart is empty")
-  }
 
   public async closeCartModal() {
     await (await this.close_icon).click()
-    await expect(this.cart_modal).not.toBeDisplayed()
-  }
-
-  public async checkSignInButtonText() {
-    await expect(this.cart_modal_button).toHaveTextContaining('Sign In to Order')
   }
 
   public async seeDishDetails() {

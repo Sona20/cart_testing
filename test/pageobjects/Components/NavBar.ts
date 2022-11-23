@@ -1,6 +1,7 @@
+import AbstractPage from '../AbstractPage';
 import Locators from '../Locators/Locators';
 
-class NavBar {
+class NavBar extends AbstractPage {
   public get address_input() {
     return $(Locators.address_input);
   }
@@ -19,7 +20,7 @@ class NavBar {
 
   public async setaddress(addressName: string) {
     await (await this.address_input).setValue(addressName);
-    await browser.pause(1000);
+    await this.pause(2000)
     await browser.keys(['\uE015', '\uE015', '\uE015', '\uE007']);
   }
 
@@ -27,15 +28,10 @@ class NavBar {
     await (await this.cart_button).click();
   }
 
-  public async checkNotificationOnCart() {
-    await expect(await this.count_on_cart).toBeDisplayed();
-  }
-
   public async changeLanguage() {
     await (await this.languages).click()
-    await browser.pause(2000)
+    await this.pause(2000)
     await (await this.ru_lang).click()
-
   }
 }
 export default new NavBar();

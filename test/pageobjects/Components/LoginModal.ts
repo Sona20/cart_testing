@@ -1,6 +1,6 @@
 import Locators from '../Locators/Locators';
-
-class LoginModal {
+import AbstractPage from '../AbstractPage';
+class LoginModal extends AbstractPage {
     public get login_button() {
         return $(Locators.login_button);
     }
@@ -23,16 +23,6 @@ class LoginModal {
 
     public get account_icon() {
         return $(Locators.account_icon);
-    }
-
-    public async logIn(email: string, password: string) {
-        await (await this.login_button).click();
-        await (await this.dialog_modal).isDisplayed();
-        await (await this.email_input).setValue(email);
-        await (await this.password_input).setValue(password);
-        await (await this.sign_in_button).click();
-
-        await expect(this.account_icon).toBeDisplayed()
     }
 
 }
