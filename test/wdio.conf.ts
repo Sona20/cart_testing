@@ -2,6 +2,42 @@ import type { Options } from '@wdio/types';
 import { ReportGenerator, HtmlReporter } from 'wdio-html-nice-reporter';
 let reportAggregator: ReportGenerator;
 
+
+let baseUrl: string;
+let env = process.env.Env;
+let urls = {
+  qa: 'https://menu.am',
+  dev: 'https://menu.am',
+  prod: 'https://menu.am',
+}
+
+
+
+if (Object.keys(urls).includes(env)) {
+  baseUrl = urls[env]
+} else {
+  console.error("use command like: Env=qa/dev/prod br=chrome/mozila/safari npm run wdio")
+  process.exit()
+}
+let services: Array<string>;
+let env1 = process.env.br;
+
+let browsers = {
+  chrome: ['chromedriver'],
+  mozila: ['geckodriver'],
+  safari: ['safaridriver'],
+}
+
+
+
+if (Object.keys(browsers).includes(env1)) {
+  services = browsers[env1]
+} else {
+  console.error("use command like: Env=qa/dev/prod br=chrome/mozila/safari npm run wdio")
+  process.exit()
+}
+
+
 export const config: Options.Testrunner = {
   //   user: 'goya_kQhzAo',
 
@@ -77,6 +113,7 @@ export const config: Options.Testrunner = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
+  headless: true,
   maxInstances: 10,
   //
   // If you have trouble getting all important capabilities together, check out the
@@ -91,17 +128,18 @@ export const config: Options.Testrunner = {
       maxInstances: 5,
       //
       browserName: 'chrome',
+
       acceptInsecureCerts: true,
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
       // excludeDriverLogs: ['bugreport', 'server'],
     },
-    {
-      browserName: 'firefox',
+    // {
+    //   browserName: 'firefox',
 
-      acceptInsecureCerts: true,
-    },
+    //   acceptInsecureCerts: true,
+    // },
 
     // {
     //   browserName: 'safari',
@@ -117,7 +155,7 @@ export const config: Options.Testrunner = {
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
   logLevel: 'info',
-  outputDir: './logs',
+  // outputDir: './logs',
   //
   // Set specific log levels per logger
   // loggers:
@@ -141,7 +179,7 @@ export const config: Options.Testrunner = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: 'http://localhost',
+  baseUrl: baseUrl,
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -157,7 +195,7 @@ export const config: Options.Testrunner = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ['chromedriver', 'geckodriver'],
+  services: services,
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
