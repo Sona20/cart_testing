@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/wdio test/wdio.conf.ts",
     "wdio": "wdio run test/wdio.conf.ts"
   },
   "repository": {
@@ -32,7 +32,6 @@
     "wdio-safaridriver-service": "^2.0.0"
   },
   "dependencies": {
-    "prettier": "^2.7.1",
-    "wdio-html-nice-reporter": "^8.0.6"
+    "prettier": "^2.7.1"
   }
 }

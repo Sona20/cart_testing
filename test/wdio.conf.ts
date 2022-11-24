@@ -1,6 +1,4 @@
 import type { Options } from '@wdio/types';
-import { ReportGenerator, HtmlReporter } from 'wdio-html-nice-reporter';
-let reportAggregator: ReportGenerator;
 
 
 let baseUrl: string;
@@ -155,7 +153,6 @@ export const config: Options.Testrunner = {
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
   logLevel: 'info',
-  // outputDir: './logs',
   //
   // Set specific log levels per logger
   // loggers:

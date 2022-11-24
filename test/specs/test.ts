@@ -18,7 +18,7 @@ describe('test suit for cart functionality', () => {
   })
 
 
-  it('Verify cart button functionality when cart is empty', async () => {
+  it.only('Verify cart button functionality when cart is empty', async () => {
     await NavBar.clickOnCartButton();
     await expect(CartModal.empty_cart_text).toHaveTextContaining("fdfdfd", { message: "Text should be 'Your shopping cart is empty.'" })
   });
@@ -60,7 +60,7 @@ describe('test suit for cart functionality', () => {
     await HomePage.clickOnRestaurant();
     await RestaurantPage.clickOnCartIcon();
     await NavBar.clickOnCartButton();
-    await (await CartModal.cart_button).click();
+    await (await CartModal.cart_modal_button).click();
     await LoginModal.logIn('anna.elez.y@tumo.org', 'Ltkmabyfhbq059');
     await NavBar.clickOnCartButton();
     await expect(await CartModal.cart_modal_button).toHaveTextContaining('Go to Checkout', { message: "Correct text doesn't appear" });
