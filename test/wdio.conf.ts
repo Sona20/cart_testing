@@ -7,23 +7,23 @@ let urls = {
   qa: 'https://menu.am',
   dev: 'https://menu.am',
   prod: 'https://menu.am',
-}
-
-
+};
 
 if (Object.keys(urls).includes(env)) {
-  baseUrl = urls[env]
+  baseUrl = urls[env];
 } else {
-  console.error("use command like: Env=qa/dev/prod br=chrome/mozila/safari npm run wdio")
-  process.exit()
+  console.error(
+    'use command like: Env=qa/dev/prod br=chrome/firefox/safari/parallel npm run wdio'
+  );
+  process.exit();
 }
 let services: Array<string>;
 let env1 = process.env.br;
-let capabilities: Array<object>
+let capabilities: Array<object>;
 let browsers = {
   chrome: {
-    driver: ['chromedriver'],
-    capabilities:  [
+    services: ['chromedriver'],
+    capabilities: [
       {
         maxInstances: 5,
         browserName: 'chrome',
@@ -32,49 +32,52 @@ let browsers = {
     ],
   },
   firefox: {
-    driver: ['chromedriver'],
-    capabilities:  [
+    services: ['geckodriver'],
+    capabilities: [
       {
         maxInstances: 5,
-        browserName: 'chrome',
+        browserName: 'firefox',
         acceptInsecureCerts: true,
       },
     ],
   },
   safari: {
-    driver: ['chromedriver','geckodriver'],
-    capabilities:  [
+    services: ['safaridriver'],
+    capabilities: [
       {
         maxInstances: 5,
-        driver: ['safaridriver'],
+        browserName: 'safari',
         acceptInsecureCerts: true,
       },
     ],
   },
 
-  parrallel: {
-    driver: ['geckodriver'],
-    capabilities:  [
+  parallel: {
+    services: ['chromedriver', 'geckodriver'],
+    capabilities: [
       {
         maxInstances: 5,
-        driver: ['safaridriver'],
+        browserName: 'chrome',
+        acceptInsecureCerts: true,
+      },
+      {
+        maxInstances: 5,
+        browserName: 'firefox',
         acceptInsecureCerts: true,
       },
     ],
   },
-  
-  
-}
-
-
+};
 
 if (Object.keys(browsers).includes(env1)) {
-  services = browsers[env1].driver
+  services = browsers[env1].services;
+  capabilities = browsers[env1].capabilities;
 } else {
-  console.error("use command like: Env=qa/dev/prod br=chrome/mozila/safari npm run wdio")
-  process.exit()
+  console.error(
+    'use command like: Env=qa/dev/prod br=chrome/firefox/safari/parallel npm run wdio'
+  );
+  process.exit();
 }
-
 
 export const config: Options.Testrunner = {
   //   user: 'goya_kQhzAo',
@@ -158,33 +161,36 @@ export const config: Options.Testrunner = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
-  capabilities: [
-    {
-      // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-      // grid with only 5 firefox instances available you can make sure that not more than
-      // 5 instances get started at a time.
-      maxInstances: 5,
-      //
-      browserName: 'chrome',
 
-      acceptInsecureCerts: true,
-      // If outputDir is provided WebdriverIO can capture driver session logs
-      // it is possible to configure which logTypes to include/exclude.
-      // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-      // excludeDriverLogs: ['bugreport', 'server'],
-    },
-    // {
-    //   browserName: 'firefox',
+  capabilities: capabilities,
 
-    //   acceptInsecureCerts: true,
-    // },
+  // capabilities: [
+  //   {
+  //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+  //     // grid with only 5 firefox instances available you can make sure that not more than
+  //     // 5 instances get started at a time.
+  //     maxInstances: 5,
+  //     //
+  //     browserName: 'chrome',
 
-    // {
-    //   browserName: 'safari',
+  //     acceptInsecureCerts: true,
+  //     // If outputDir is provided WebdriverIO can capture driver session logs
+  //     // it is possible to configure which logTypes to include/exclude.
+  //     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+  //     // excludeDriverLogs: ['bugreport', 'server'],
+  //   },
+  //   // {
+  //   //   browserName: 'firefox',
 
-    //   acceptInsecureCerts: true,
-    // },
-  ],
+  //   //   acceptInsecureCerts: true,
+  //   // },
+
+  //   // {
+  //   //   browserName: 'safari',
+
+  //   //   acceptInsecureCerts: true,
+  //   // },
+  // ],
   //
   // ===================
   // Test Configurations

@@ -16,7 +16,7 @@ describe('test suit for cart functionality', () => {
     await browser.reloadSession();
   });
 
-  it.only('Verify cart button functionality when cart is empty', async () => {
+  it.only('C1 Verify cart button functionality when cart is empty', async () => {
     await NavBar.clickOnCartButton();
     await expect(CartModal.empty_cart_text).toHaveTextContaining("Your shopping cart is empty.", { message: "Text should be 'Your shopping cart is empty.'" })
   });
