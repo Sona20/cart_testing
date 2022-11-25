@@ -4,6 +4,7 @@ import HomePage from '../pageobjects/HomePage';
 import RestaurantPage from '../pageobjects/RestaurantPage';
 import LoginModal from '../pageobjects/Components/LoginModal';
 import DishModal from '../pageobjects/Components/DishModal';
+import logger from '../logger'
 
 describe('test suit for cart functionality', () => {
 
@@ -17,22 +18,39 @@ describe('test suit for cart functionality', () => {
     await browser.reloadSession()
   })
 
-
   it.only('Verify cart button functionality when cart is empty', async () => {
     await NavBar.clickOnCartButton();
-    await expect(CartModal.empty_cart_text).toHaveTextContaining("fdfdfd", { message: "Text should be 'Your shopping cart is empty.'" })
+    logger.log({
+      message: 'Clicked on navbar cart button', level: 'info'
+    });
+    await expect(CartModal.empty_cart_text).toHaveTextContaining("Your shopping cart is empty.", { message: "Text should be 'Your shopping cart is empty.'" })
   });
 
   it('Verify that counter appears on the cart icon after adding an item to the cart', async () => {
     await HomePage.clickOnRestaurant();
+    logger.log({
+      message: 'Choosed restaurant', level: 'info'
+    });
     await RestaurantPage.clickOnCartIcon();
+    logger.log({
+      message: 'Added item to cart', level: 'info'
+    });
     await expect(await NavBar.count_on_cart).toBeDisplayed({ message: "Counter on cart button didn't display'" });
   });
 
   it('Verify that counter appears on the cart icon after after clicking on "Add to cart" button', async () => {
     await HomePage.clickOnRestaurant();
+    logger.log({
+      message: 'Choosed restaurant', level: 'info'
+    });
     await RestaurantPage.clickOnDish();
+    logger.log({
+      message: 'Clicked on dish', level: 'info'
+    });
     await DishModal.clickOnAddToCartButton();
+    logger.log({
+      message: 'Added item to cart', level: 'info'
+    });
     await expect(await NavBar.count_on_cart).toBeDisplayed({ message: "Counter doesn't appear" });
   });
 

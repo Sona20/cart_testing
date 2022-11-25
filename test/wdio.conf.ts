@@ -220,27 +220,7 @@ export const config: Options.Testrunner = {
 
 
 
-  // reporters: ['spec'], 
-  reporters: ['spec',
-    ["html-nice", {
-      outputDir: './reports/html-reports/',
-      filename: 'report.html',
-      reportTitle: 'Test Report Title',
-      linkScreenshots: true,
-      //to show the report in a browser when done
-      showInBrowser: true,
-      collapseTests: false,
-      //to turn on screenshots after every test
-      // useOnAfterCommandForScreenshot: true,
-
-      //to initialize the logger
-      // LOG: log4j.getLogger("default")
-    }
-    ]
-  ],
-
-
-
+  reporters: ['spec'], 
 
   //
   // Options to be passed to Mocha.
