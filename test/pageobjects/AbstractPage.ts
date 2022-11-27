@@ -1,4 +1,6 @@
 import Locators from "./Locators/Locators";
+import * as request from 'supertest';
+
 
 export default class AbstractPage {
     public get login_button() {
@@ -30,11 +32,16 @@ export default class AbstractPage {
     }
 
     public async logIn(email: string, password: string) {
-        await (await this.login_button).click();
-        await (await this.dialog_modal).isDisplayed();
-        await (await this.email_input).setValue(email);
-        await (await this.password_input).setValue(password);
-        await (await this.sign_in_button).click();
+        // await (await this.login_button).click();
+        // await (await this.dialog_modal).isDisplayed();
+        // await (await this.email_input).setValue(email);
+        // await (await this.password_input).setValue(password);
+        // await (await this.sign_in_button).click();
+
+        const response = await request('https://ext-api.menu.am/').post('s1-apiv2/index/authenticate').send({ user: email, pwd: password }) 
+            .set('Accept', 'application/json')
+            console.log(response.body, "<<<<<");
+            
     }
 
     public async pause(sec: number) {

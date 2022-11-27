@@ -1,13 +1,8 @@
 import type { Options } from '@wdio/types';
-
+import urls from '../utils/env'
 
 let baseUrl: string;
 let env = process.env.Env;
-let urls = {
-  qa: 'https://menu.am',
-  dev: 'https://menu.am',
-  prod: 'https://menu.am',
-};
 
 if (Object.keys(urls).includes(env)) {
   baseUrl = urls[env];

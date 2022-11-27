@@ -16,7 +16,7 @@ describe('test suit for cart functionality', () => {
     await browser.reloadSession();
   });
 
-  it.only('C1 Verify cart button functionality when cart is empty', async () => {
+  it('C1 Verify cart button functionality when cart is empty', async () => {
     await NavBar.clickOnCartButton();
     await expect(CartModal.empty_cart_text).toHaveTextContaining("Your shopping cart is empty.", { message: "Text should be 'Your shopping cart is empty.'" })
   });
@@ -53,14 +53,14 @@ describe('test suit for cart functionality', () => {
     await expect(await DishModal.product_desc).toHaveTextContaining('тако с курицей 2шт, тако с говядиной 2шт, соус Ранч 2 порции, кесадилья с курицей 1шт, Кока Кола 0.5л 2шт', { message: "Text isn't translated correctly" })
   });
 
-  it("Check if cart button have 'Go to checkout' text after signing up", async () => {
-    await HomePage.clickOnRestaurant();
-    await RestaurantPage.clickOnCartIcon();
-    await NavBar.clickOnCartButton();
-    await (await CartModal.cart_button).click();
+  it.only("Check if cart button have 'Go to checkout' text after signing up", async () => {
+    // await HomePage.clickOnRestaurant();
+    // await RestaurantPage.clickOnCartIcon();
+    // await NavBar.clickOnCartButton();
+    // await (await CartModal.cart_button).click();
     await LoginModal.logIn('anna.elez.y@tumo.org', 'Ltkmabyfhbq059');
-    await NavBar.clickOnCartButton();
-    await expect(await CartModal.cart_modal_button).toHaveTextContaining('Go to Checkout', { message: "Correct text doesn't appear" });
+    // await NavBar.clickOnCartButton();
+    // await expect(await CartModal.cart_modal_button).toHaveTextContaining('Go to Checkout', { message: "Correct text doesn't appear" });
   });
 
 });
